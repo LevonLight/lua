@@ -1,1 +1,397 @@
-local _={} local function n(a,_)local b=RaycastParams.new() b.FilterType=Enum.RaycastFilterType.Whitelist b.FilterDescendantsInstances={workspace.Map} b.IgnoreWater=true local _=workspace:Raycast(a,_,b) if _ then return _.Instance,_.Position,_.Normal,_.Material else return false end end function _.Knockback(_)local r=game:GetService("\x52\x65\x70\x6C\x69\x63\x61\x74\x65\x64\x53\x74\x6F\x72\x61\x67\x65") local l=r.Effects local x,o,k,h=unpack(_) local q=game.Players:GetPlayerFromCharacter(x) local a=tick() local j=false local g=Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65",x) g.Name="\x4B\x6E\x6F\x63\x6B\x62\x61\x63\x6B" local f=Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65",x) f.Name="\x43\x31\x4C\x6F\x63\x6B" local v=false local m m=x.ChildAdded:Connect(function(_)task.wait(0.01) if _.Name=="\x4B\x6E\x6F\x63\x6B\x62\x61\x63\x6B"then v=true end end) spawn(function()if h==true then q.Backpack.GameStatus.Busy.Value=true local _=_G.TStun(x,true)end if x:FindFirstChild("\x46\x61\x6C\x6C\x69\x6E\x67")then x:FindFirstChild("\x46\x61\x6C\x6C\x69\x6E\x67"):Destroy()end if x:GetAttribute("\x49\x6E\x76")==true then local _=Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65") _.Name="\x49\x6E\x76\x45\x66\x66\x4F\x66\x66" _.Parent=x game:GetService("\x44\x65\x62\x72\x69\x73"):AddItem(_,0.6)end _G.Inv(true,x,{true}) local y=x:WaitForChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64\x52\x6F\x6F\x74\x50\x61\x72\x74") local u=x:FindFirstChildOfClass("\x48\x75\x6D\x61\x6E\x6F\x69\x64") if typeof(k)~="\x6E\x75\x6D\x62\x65\x72"then k=0.5 end if typeof(o)~="\x56\x65\x63\x74\x6F\x72\x33"then o=y.CFrame.LookVector*-80+y.CFrame.UpVector*10 end local b=y.Position spawn(function()if y:CanSetNetworkOwnership()then y:SetNetworkOwner(nil)end end) for _,_ in pairs(y:GetChildren())do if _:IsA("\x42\x6F\x64\x79\x4D\x6F\x76\x65\x72")then _:Destroy()end end u.AutoRotate=false u.PlatformStand=true y.Anchored=false local d=l.HitEffects.FlyingSmoke:Clone() d.Parent=y local c c=x.ChildRemoved:Connect(function(_)if _.Name=="\x46\x61\x6C\x6C\x69\x6E\x67"or _.Name=="\x4B\x6E\x6F\x63\x6B\x62\x61\x63\x6B"then d.Rate=0 task.wait(1) d:Destroy() c:Disconnect()end end) local p=r.Animations.Knockback local c,_=p.Flying:GetChildren(),p.Sliding:GetChildren() local d=u.Animator:LoadAnimation(c[math.random(1,#c)]) local e=u.Animator:LoadAnimation(_[math.random(1,#_)]) local i=u.Animator:LoadAnimation(p.OnTheGround) local c=u.Animator:LoadAnimation(p.GettingUp) local t=_G.GetWait(0.2,x) local s=_G.GetWait(1,x,true) task.spawn(function()for _,_ in pairs(u.Animator:GetPlayingAnimationTracks())do if _.Priority==Enum.AnimationPriority.Action then _:Stop()end end d:Play(t,1,s)end) local w=Instance.new("\x42\x6F\x64\x79\x56\x65\x6C\x6F\x63\x69\x74\x79") w.MaxForce=Vector3.new(1,1,1)*math.huge print(o) w.Velocity=o*_G.GetWait(1,x,true) print(w.P) w.P=w.P*_G.GetWait(1,x,true) print(w.P) w.Name="\x4B\x6E\x6F\x63\x6B\x42\x56" w.Parent=y local p=y.CFrame:VectorToObjectSpace(w.Velocity) local o=y.CFrame*CFrame.new(p) local _=l.HitEffects.AirLoops:Clone() _.Parent=workspace.Effects task.spawn(function()while _ and _.Parent~=nil do _.Position=y.Position _.AirLoops:Emit(_.AirLoops.EmitCount.Value) _.CFrame=CFrame.new(_.Position,o.Position) if x:FindFirstChild("\x46\x61\x6C\x6C\x69\x6E\x67")or v==true then _.AirLoops.Rate=0 task.wait(1) _:Destroy() break end task.wait(0.05)end end) r.CharacterEvents:FireAllClients(x,{"\x41\x69\x72\x4C\x61\x75\x6E\x63\x68",o}) local _,_,_=w.Velocity.X,w.Velocity.Y,w.Velocity.Z local _=false repeat p=y.CFrame:VectorToObjectSpace(w.Velocity) o=y.CFrame*CFrame.new(p) local _=y.Orientation.Y if not(w or w.Parent or v==true)then break end if p.Magnitude>0 then y.CFrame=y.CFrame:lerp(CFrame.new(y.Position,o.Position)*CFrame.Angles(0,math.rad(180),0),0.075)end if tick()-a>=k*_G.GetWait(1,x)then if not x:FindFirstChild("\x46\x61\x6C\x6C\x69\x6E\x67")then local _=Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65",x) _.Name="\x46\x61\x6C\x6C\x69\x6E\x67"end w.Velocity=Vector3.new(w.Velocity.X,math.clamp(w.Velocity.Y-2,-300,math.huge),w.Velocity.Z)*_G.GetWait(1,x) local a,f=n(y.Position,Vector3.new(0,y.Size.Y*-1.5,0)) if a~=false and(w and w.Parent)and v==false then y.Anchored=true if x:FindFirstChild("\x46\x61\x6C\x6C\x69\x6E\x67")then x:FindFirstChild("\x46\x61\x6C\x6C\x69\x6E\x67"):Destroy()end if w.Velocity.Y>-120 then r.CharacterEvents:FireAllClients(x,{"\x47\x72\x6F\x75\x6E\x64\x48\x69\x74\x4E\x6F\x72\x6D\x61\x6C",f})else r.CharacterEvents:FireAllClients(x,{"\x47\x72\x6F\x75\x6E\x64\x48\x69\x74\x48\x61\x72\x64",f})end w:Destroy() local _=CFrame.new(f+Vector3.new(0,y.Size.Y*1.5,0))*CFrame.Angles(0,math.rad(_),0) if not y:FindFirstChild("\x4B\x6E\x6F\x63\x6B\x42\x56")then y.CFrame=_ else v=true end local b=_*CFrame.new(0,0,(b-y.Position).Magnitude/2) OnGround=Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65",x) OnGround.Name="\x4F\x6E\x47\x72\x6F\x75\x6E\x64" e:Play(t,1,s) local f=l.HitEffects.Slide:Clone() f.Parent=workspace.Effects for _=1,75 do local a,_=n(y.Position,CFrame.new(y.Position,b.Position).LookVector*3) if a~=nil then if v==false then if not y:FindFirstChild("\x4B\x6E\x6F\x63\x6B\x42\x56")then y.CFrame=y.CFrame:Lerp(b,0.05) f.CFrame=y.CFrame*CFrame.new(0,(y.Size.Y*-1.5)+(y.Size.Y/2),0)end else f:FindFirstChildOfClass("\x50\x61\x72\x74\x69\x63\x6C\x65\x45\x6D\x69\x74\x74\x65\x72").Rate=0 delay(f:FindFirstChildOfClass("\x50\x61\x72\x74\x69\x63\x6C\x65\x45\x6D\x69\x74\x74\x65\x72").Lifetime.Max,function()f:Destroy()end) break end task.wait()end end if v==true then break end i:Play(t,1,s) f:FindFirstChildOfClass("\x50\x61\x72\x74\x69\x63\x6C\x65\x45\x6D\x69\x74\x74\x65\x72").Rate=0 delay(f:FindFirstChildOfClass("\x50\x61\x72\x74\x69\x63\x6C\x65\x45\x6D\x69\x74\x74\x65\x72").Lifetime.Max,function()f:Destroy()end) local _=tick() while true do if y:FindFirstChild("\x4B\x6E\x6F\x63\x6B\x42\x56")then v=true break end if tick()-_>=1 then break end task.wait()end if v==true then break end d:Stop(t,1,s) e:Stop(t,1,s) c:Play(t,1,_G.GetWait(1.8,x,true)) i:Stop(t,1,s) _G.Inv(false,x,{2}) _G.Inv(true,x,{false}) j=true task.spawn(function()for _,a in pairs(game:GetService("\x50\x6C\x61\x79\x65\x72\x73"):GetPlayers())do local _=a.Character or a.CharacterAdded:Wait() local _=_:WaitForChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64\x52\x6F\x6F\x74\x50\x61\x72\x74") if(_.Position-y.Position).Magnitude<=150 then r.CharacterEvents:FireClient(a,x,{"\x69\x46\x72\x61\x6D\x65\x73"})end end end) local b,a=n(y.Position,y.CFrame.LookVector*-10) local c local _=y.Orientation.Y local d=false if b~=nil then if v==true then d=true else c=y.CFrame*CFrame.new(0,0,5)end else if v==true then d=true else c=CFrame.new(a)*CFrame.Angles(0,math.rad(_),0)end end if d==true then break end for _=1,75 do if v==true then d=true break else y.CFrame=y.CFrame:Lerp(c,0.1)end task.wait()end if d==true then break end y.CFrame=c y.Anchored=false y.Velocity=Vector3.new(0,0,0) u.PlatformStand=false u.AutoRotate=true u.Jump=false u:ChangeState(Enum.HumanoidStateType.Running) if q and y:CanSetNetworkOwnership()then y:SetNetworkOwner(q)end m:Disconnect() break end end task.wait()until not w or w.Parent==nil or v==true if h==true then if x:FindFirstChild("\x53\x74\x75\x6E\x6E\x65\x64")then x:FindFirstChild("\x53\x74\x75\x6E\x6E\x65\x64"):Destroy() q.Backpack.GameStatus.Busy.Value=false end end if j==false then _G.Inv(true,x,{false})end task.delay(_G.GetWait(0.5,x),function()f:Destroy()end) m:Disconnect() g:Destroy() if OnGround then OnGround:Destroy()end end)end return _
+local function RayCast(Orgin, direction)
+	
+	local Args = RaycastParams.new()
+	Args.FilterType = Enum.RaycastFilterType.Whitelist
+	Args.FilterDescendantsInstances = {
+		workspace.Map
+	}
+	Args.IgnoreWater = true
+	
+	local RayCast = workspace:Raycast(Orgin, direction, Args)
+	
+	if RayCast then
+		return RayCast.Instance, RayCast.Position, RayCast.Normal, RayCast.Material
+	else
+		return false
+	end
+end
+
+local function Test()
+	print("Hello!")
+end
+
+local function Knockback(Args)
+	local RS = game:GetService("ReplicatedStorage")
+	local Effects = RS.Effects
+	local Char, Direction, FlyingTime, Autostun = unpack(Args)
+	local P = game.Players:GetPlayerFromCharacter(Char)
+	local StartTime = tick()
+	local InvOff = false
+	
+	local Check = Instance.new("BoolValue", Char)
+	Check.Name = "Knockback"
+
+	local C1Lock = Instance.new("BoolValue", Char)
+	C1Lock.Name = "C1Lock"
+
+	local End = false
+	local EndWatch
+	EndWatch = Char.ChildAdded:Connect(function(child)
+		task.wait(0.01)
+		if child.Name == "Knockback" then
+			End = true
+		end
+	end)
+
+	spawn(function()
+		if Autostun == true then
+			P.Backpack.GameStatus.Busy.Value = true
+			local Stun = _G.TStun(Char, true)
+		end
+		
+		if Char:FindFirstChild("Falling") then
+			Char:FindFirstChild("Falling"):Destroy()
+		end
+		
+		if Char:GetAttribute("Inv") == true then
+			local InvEff = Instance.new("BoolValue")
+			InvEff.Name = "InvEffOff"
+			InvEff.Parent = Char
+			game:GetService("Debris"):AddItem(InvEff, 0.6)
+		end
+
+		_G.Inv(true, Char, {
+			true
+		})
+		
+
+		local HRP = Char:WaitForChild("HumanoidRootPart")
+		local Humanoid = Char:FindFirstChildOfClass("Humanoid")
+
+		if typeof(FlyingTime) ~= "number" then
+			FlyingTime = 0.5
+		end
+
+		if typeof(Direction) ~= "Vector3" then
+			Direction = HRP.CFrame.LookVector * -80 + HRP.CFrame.UpVector * 10
+		end
+		
+		local OldPos = HRP.Position
+
+		spawn(function()
+			if HRP:CanSetNetworkOwnership() then
+				HRP:SetNetworkOwner(nil)
+			end
+		end)
+
+		for i, v in pairs(HRP:GetChildren()) do
+			if v:IsA("BodyMover") then
+				v:Destroy()
+			end
+		end
+
+		Humanoid.AutoRotate = false
+		Humanoid.PlatformStand = true
+		HRP.Anchored = false
+
+		local Smoke = Effects.HitEffects.FlyingSmoke:Clone()
+		Smoke.Parent = HRP
+		
+		
+		local Remove
+		Remove = Char.ChildRemoved:Connect(function(child)
+			if child.Name == "Falling" or child.Name == "Knockback" then
+				Smoke.Rate = 0
+				task.wait(1)
+				Smoke:Destroy()
+				Remove:Disconnect()
+			end
+		end)
+
+		local AirAnimations = RS.Animations.Knockback
+		local Options, Options2 = AirAnimations.Flying:GetChildren(), AirAnimations.Sliding:GetChildren()
+		local Knockback = Humanoid.Animator:LoadAnimation(Options[math.random(1, #Options)])
+		local SlidingAnim = Humanoid.Animator:LoadAnimation(Options2[math.random(1, #Options2)])
+		local GroundAnim = Humanoid.Animator:LoadAnimation(AirAnimations.OnTheGround)
+		local GettingUp = Humanoid.Animator:LoadAnimation(AirAnimations.GettingUp)
+
+		local Del = _G.GetWait(0.2, Char)
+		local Speed = _G.GetWait(1, Char, true)
+
+		task.spawn(function()
+			for i, v in pairs(Humanoid.Animator:GetPlayingAnimationTracks()) do
+				if v.Priority == Enum.AnimationPriority.Action then
+					v:Stop()
+				end
+			end
+			Knockback:Play(Del, 1, Speed)
+		end)
+
+		local BV = Instance.new("BodyVelocity")
+		BV.MaxForce = Vector3.new(1, 1, 1) * math.huge
+		print(Direction)
+		BV.Velocity = Direction * _G.GetWait(1, Char, true)
+		print(BV.P)
+		BV.P = BV.P * _G.GetWait(1, Char, true)
+		print(BV.P)
+		BV.Name = "KnockBV"
+		BV.Parent = HRP
+		
+		local VelocityEndPoint = HRP.CFrame:VectorToObjectSpace(BV.Velocity)
+		local LookAtPoint = HRP.CFrame * CFrame.new(VelocityEndPoint)
+
+		local Circles = Effects.HitEffects.AirLoops:Clone()
+		Circles.Parent = workspace.Effects
+		
+		task.spawn(function()
+			while Circles and Circles.Parent ~= nil do
+				Circles.Position = HRP.Position
+				Circles.AirLoops:Emit(Circles.AirLoops.EmitCount.Value)
+				Circles.CFrame = CFrame.new(Circles.Position, LookAtPoint.Position)
+				if Char:FindFirstChild("Falling") or End == true then
+					Circles.AirLoops.Rate = 0
+					task.wait(1)
+					Circles:Destroy()
+					break
+				end
+				task.wait(0.05)
+			end
+		end)
+
+		RS.CharacterEvents:FireAllClients(Char, {"AirLaunch", LookAtPoint})
+		
+		local OldX1, OldY1, OldZ1 = BV.Velocity.X, BV.Velocity.Y, BV.Velocity.Z
+		
+		local VelChange = false
+		
+		repeat
+			VelocityEndPoint = HRP.CFrame:VectorToObjectSpace(BV.Velocity)
+			LookAtPoint = HRP.CFrame * CFrame.new(VelocityEndPoint)
+			
+			local OldRootY = HRP.Orientation.Y
+
+			if not(BV or BV.Parent or End == true) then
+				break
+			end
+
+			if VelocityEndPoint.Magnitude > 0 then
+				HRP.CFrame = HRP.CFrame:lerp(CFrame.new(HRP.Position, LookAtPoint.Position) * CFrame.Angles(0, math.rad(180), 0), 0.075)
+			end
+			
+			
+			if tick() - StartTime >= FlyingTime * _G.GetWait(1, Char) then
+				local Par = Instance.new("Part")
+				Par.Name = "part"
+				Par.CanCollide = false
+				Par.Size = HRP.Size
+				Par.Parent = workspace
+				Par.Position = HRP.Position
+				Par.Orientation = Vector3.new(0, HRP.Orientation.Y, 0)
+				Par.CollisionGroupId = 1
+				Par.Anchored = true
+				
+				if not Char:FindFirstChild("Falling") then
+					local Flying = Instance.new("BoolValue", Char)
+					Flying.Name = "Falling"
+				end
+
+				BV.Velocity = Vector3.new(BV.Velocity.X, math.clamp(BV.Velocity.Y - 2, -300, math.huge), BV.Velocity.Z) * _G.GetWait(1, Char)
+
+				local GroundCheck, GroundCheckPos = RayCast(HRP.Position, Vector3.new(0, HRP.Size.Y * -1.5, 0))
+				
+				if GroundCheck ~= false and (BV and BV.Parent) and End == false then
+					
+					HRP.Anchored = true
+
+					if Char:FindFirstChild("Falling") then
+						Char:FindFirstChild("Falling"):Destroy()
+					end
+
+					if BV.Velocity.Y > -120 then
+						RS.CharacterEvents:FireAllClients(Char, {
+							"GroundHitNormal",
+							GroundCheckPos
+						})
+					else
+						RS.CharacterEvents:FireAllClients(Char, {
+							"GroundHitHard",
+							GroundCheckPos
+						})
+					end
+					
+					BV:Destroy()
+
+					local EndOrient = CFrame.new(GroundCheckPos + Vector3.new(0, HRP.Size.Y * 1.5, 0)) * CFrame.Angles(0, math.rad(OldRootY), 0)
+					
+					if not HRP:FindFirstChild("KnockBV") then
+						HRP.CFrame = EndOrient
+					else
+						End = true
+					end
+
+					local SlidePoint = EndOrient * CFrame.new(0, 0, (OldPos - HRP.Position).Magnitude / 2)
+
+					OnGround = Instance.new("BoolValue", Char)
+					OnGround.Name = "OnGround"
+
+					SlidingAnim:Play(Del, 1, Speed)
+
+					local SlideFX = Effects.HitEffects.Slide:Clone()
+					SlideFX.Parent = workspace.Effects
+					
+					for i = 1, 75 do
+						local GroundSlide, GroundPos = RayCast(HRP.Position, CFrame.new(HRP.Position, SlidePoint.Position).LookVector * 3)
+						if GroundSlide ~= nil then
+							if End == false then
+								if not HRP:FindFirstChild("KnockBV") then
+									--HRP.CFrame = HRP.CFrame:Lerp(SlidePoint, 0.05)
+									SlideFX.CFrame = HRP.CFrame * CFrame.new(0, (HRP.Size.Y * -1.5) + (HRP.Size.Y / 2), 0)
+								end
+							else
+								SlideFX:FindFirstChildOfClass("ParticleEmitter").Rate = 0
+								delay(SlideFX:FindFirstChildOfClass("ParticleEmitter").Lifetime.Max, function()
+									SlideFX:Destroy()
+								end)
+								break
+							end
+							task.wait()
+						end
+					end
+
+					if End == true then
+						break
+					end
+
+					GroundAnim:Play(Del, 1, Speed)
+
+					SlideFX:FindFirstChildOfClass("ParticleEmitter").Rate = 0
+					
+					delay(SlideFX:FindFirstChildOfClass("ParticleEmitter").Lifetime.Max, function()
+						SlideFX:Destroy()
+					end)
+
+					local UpdatedTime = tick()
+
+					while true do
+						if HRP:FindFirstChild("KnockBV") then
+							End = true
+							break
+						end
+						if tick() - UpdatedTime >= 1 then
+							break
+						end
+						task.wait()
+					end
+
+					if End == true then
+						break
+					end
+
+					Knockback:Stop(Del, 1, Speed)
+					SlidingAnim:Stop(Del, 1, Speed)
+					GettingUp:Play(Del, 1, _G.GetWait(1.8, Char, true))
+					GroundAnim:Stop(Del, 1, Speed)
+					
+					_G.Inv(false, Char, {
+						2
+					})
+					_G.Inv(true, Char, {
+						false
+					})
+					
+					InvOff = true
+					
+					task.spawn(function()
+						for _, pl in pairs(game:GetService("Players"):GetPlayers()) do
+							local VChar = pl.Character or pl.CharacterAdded:Wait()
+							local VHRP = VChar:WaitForChild("HumanoidRootPart")
+							if (VHRP.Position - HRP.Position).Magnitude <= 150 then
+								RS.CharacterEvents:FireClient(pl, Char, {
+									"iFrames"
+								})
+							end
+						end
+					end)
+
+					local WallCheck, WallCheckPos = RayCast(HRP.Position, HRP.CFrame.LookVector * -10)
+					local t
+					local rot = HRP.Orientation.Y
+					local BreakCheck = false
+					
+					if WallCheck ~= nil then
+						if End == true then
+							BreakCheck = true
+						else
+							t = HRP.CFrame * CFrame.new(0, 0, 5)
+						end
+					else
+						if End == true then
+							BreakCheck = true
+						else
+							--t = CFrame.new(WallCheckPos) * CFrame.Angles(0, math.rad(rot), 0)
+						end
+					end
+					
+					if BreakCheck == true then
+						break
+					end
+					
+					for i = 1, 75 do
+						if End == true then
+							BreakCheck = true
+							break
+						else
+							--HRP.CFrame = HRP.CFrame:Lerp(t, 0.1)
+						end
+						task.wait()
+					end
+					
+					if BreakCheck == true then
+						break
+					end
+					
+					--HRP.CFrame = t
+					HRP.Anchored = false
+					HRP.Velocity = Vector3.new(0, 0, 0)
+					Humanoid.PlatformStand = false
+					Humanoid.AutoRotate = true
+					Humanoid.Jump = false
+					
+					Humanoid:ChangeState(Enum.HumanoidStateType.Running)
+					
+					if P and HRP:CanSetNetworkOwnership() then
+						HRP:SetNetworkOwner(P)
+					end
+					
+					EndWatch:Disconnect()
+					
+					break
+				end
+			end
+			task.wait()
+		until not BV or BV.Parent == nil or End == true
+		
+		if Autostun == true then
+			if Char:FindFirstChild("Stunned") then
+				Char:FindFirstChild("Stunned"):Destroy()
+				P.Backpack.GameStatus.Busy.Value = false
+			end
+		end
+		
+		if InvOff == false then
+			_G.Inv(true, Char, {
+				false
+			})
+		end
+		
+		task.delay(_G.GetWait(0.5, Char), function()
+			C1Lock:Destroy()
+		end)
+		
+		EndWatch:Disconnect()
+		Check:Destroy()
+		if OnGround then
+			OnGround:Destroy()
+		end
+	end)
+end
